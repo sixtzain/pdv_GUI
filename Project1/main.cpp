@@ -11,18 +11,20 @@ public ref class SimpleForm : public Form
 {
 public: 
 	SimpleForm();
-	int getResponsiveLocation(int actual_size);
+	int* getResponsiveLocation(int x_size, int y_size);
 
 	unsigned int MAX_HEIGHT_WINDOW = 780;
 	unsigned int MAX_WIDTH_WINDOW = 640;
 private:
-	Label^	  u_label;
-	Label^	  p_label;
-	TextBox^  user;
-	TextBox^  password;
-	CheckBox^ unlock_password;
-	Button^   login_btn;
+	PictureBox^ logo;
+	Label^		u_label;
+	Label^		p_label;
+	TextBox^	user;
+	TextBox^	password;
+	CheckBox^	unlock_password;
+	Button^		login_btn;
 	void showPassword(Object^ Sender, EventArgs^ e);
+	void logUser(Object^ Sender, EventArgs^ e);
 };
 
 SimpleForm::SimpleForm()
@@ -30,9 +32,15 @@ SimpleForm::SimpleForm()
 	this->Text = L"Hola Pariente Kun - Login para algo inutil xDxDxDDddxxxddXXDxdD";
 	this->Size = Drawing::Size(MAX_HEIGHT_WINDOW, MAX_WIDTH_WINDOW);
 
-	int pos_x = getResponsiveLocation(MAX_HEIGHT_WINDOW);
-	int pos_y = getResponsiveLocation(MAX_WIDTH_WINDOW);
+	int pos_x = getResponsiveLocation(MAX_HEIGHT_WINDOW, MAX_WIDTH_WINDOW)[0];
+	int pos_y = getResponsiveLocation(MAX_WIDTH_WINDOW, MAX_WIDTH_WINDOW)[1];
 
+	//logo Settings
+	logo = gcnew PictureBox;
+	logo->Location = Point(50, 80);
+	logo->BorderStyle = BorderStyle::FixedSingle;
+	logo->Image = Image::FromFile("img\\face_logo.png");
+	logo->Size = Drawing::Size(418, 418);
 	//User Label Settings
 	u_label = gcnew Label;
 	u_label->Location = Point(pos_x, pos_y);
@@ -62,8 +70,10 @@ SimpleForm::SimpleForm()
 	login_btn->Location = Point(pos_x + 56, pos_y + 92);
 	login_btn->Text = L"Login";
 	login_btn->AutoSize = true;
+	login_btn->Click += gcnew System::EventHandler(this, &SimpleForm::logUser);
 
 	//Adding elements to window
+	this->Controls->Add(logo);
 	this->Controls->Add(u_label);
 	this->Controls->Add(p_label);
 	this->Controls->Add(user);
@@ -80,10 +90,15 @@ int __stdcall WinMain()
 	return 0;
 }
 
-int SimpleForm::getResponsiveLocation(int actual_size)
+int* SimpleForm::getResponsiveLocation(int x_size, int y_size)
 {
-	int resized = actual_size * 0.33;
-	return resized;
+	int x_resized = x_size * 0.66;
+	int y_resized = y_size * 0.33;
+	int arr_pos[1];
+	arr_pos[0] = x_resized;
+	arr_pos[1] = y_resized;
+	int *pArr = arr_pos;
+	return pArr;
 }
 
 void SimpleForm::showPassword(Object^ Sender, EventArgs^ e)
@@ -97,4 +112,9 @@ void SimpleForm::showPassword(Object^ Sender, EventArgs^ e)
 		password->UseSystemPasswordChar = true;
 	}
 	else { return; }
+}
+
+void SimpleForm::logUser(Object^ Sender, EventArgs^ e)
+{
+	
 }
