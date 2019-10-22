@@ -1,3 +1,4 @@
+#pragma once
 #include "login_screen.h"
 
 login_screen::login_screen()
@@ -81,5 +82,5 @@ void login_screen::showPassword(Object^ Sender, EventArgs^ e)
 
 void login_screen::logUser(Object^ Sender, EventArgs^ e)
 {
-
+	
 }

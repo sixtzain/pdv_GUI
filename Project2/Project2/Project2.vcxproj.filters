@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="login_screen.cpp">
+    <ClCompile Include="winfuncs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="login_screen.h">
+    <ClInclude Include="winfuncs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
