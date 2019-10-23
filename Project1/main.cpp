@@ -6,11 +6,12 @@ using namespace std;
 
 int __stdcall WinMain()
 {
-	if (!checkInstallation())
+	if (checkInstallation())
 	{
 		login_screen^ windowskk = gcnew login_screen;
 		Application::Run(windowskk);
 	}
+	else { cout << "Nel prro >:v"; }
 
 	return 0;
 }
