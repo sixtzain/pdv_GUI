@@ -12,6 +12,10 @@ ref class logger
 {
 public:
 	logger();
-	void init();
+	void initial();
+	void infoMess(std::string message);
+	void debugMess(std::string message);
+	void traceMess(std::string message);
+	void warningMess(std::string message);
 };
 

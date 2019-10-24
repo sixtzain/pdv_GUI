@@ -101,7 +101,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\jallargx\source\repos\sixtzain\pdv_GUI\Project2\Project2;%(AdditionalIncludeDirectories);C:\boost_1_69_0\boost_1_69_0;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Project2\Project2;%(AdditionalIncludeDirectories);C:\boost_1_71_0;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Project2.lib;</AdditionalDependencies>
