@@ -104,8 +104,8 @@
       <AdditionalIncludeDirectories>..\Project2\Project2;%(AdditionalIncludeDirectories);C:\boost_1_71_0;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>Project2.lib;</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\jallargx\source\repos\sixtzain\pdv_GUI\Project2\x64\Debug;%(AdditionalLibraryDirectories);C:\boost_1_69_0\boost_1_69_0;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Project2.lib;libboost_log-vc140-mt-gd-x64-1_69.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\jallargx\source\repos\sixtzain\pdv_GUI\Project2\x64\Debug;%(AdditionalLibraryDirectories);C:\boost_1_69_0\boost_1_69_0\stage\lib\;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -124,17 +124,15 @@
       <AdditionalIncludeDirectories>C:\Users\jallargx\source\repos\sixtzain\pdv_GUI\Project2\Project2;%(AdditionalIncludeDirectories);C:\boost_1_69_0\boost_1_69_0;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>Project2.lib;</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\jallargx\source\repos\sixtzain\pdv_GUI\Project2\x64\Debug;%(AdditionalLibraryDirectories);C:\boost_1_69_0\boost_1_69_0;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Project2.lib;libboost_log-vc140-mt-gd-x64-1_69.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\jallargx\source\repos\sixtzain\pdv_GUI\Project2\x64\Debug;%(AdditionalLibraryDirectories);C:\boost_1_69_0\boost_1_69_0\stage\lib\;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="logger.cpp" />
     <ClCompile Include="login_screen.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="logger.h" />
     <ClInclude Include="login_screen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
