@@ -5,6 +5,7 @@ namespace keywords = boost::log::keywords;
 
 logger::logger()
 {
+	initial(1);
 }
 
 void logger::initial(int severity_level=1)
@@ -45,36 +46,36 @@ void logger::initial(int severity_level=1)
 
 void logger::infoLog(std::string message)
 {
-	logger::initial();
+	//logger::initial();
 	BOOST_LOG_TRIVIAL(info) << message;
 }
 
 void logger::debugLog(std::string message)
 {
-	logger::initial();
+	//logger::initial();
 	BOOST_LOG_TRIVIAL(debug) << message;
 }
 
 void logger::traceLog(std::string message)
 {
-	logger::initial();
+	//logger::initial();
 	BOOST_LOG_TRIVIAL(trace) << message;
 }
 
 void logger::warningLog(std::string message)
 {
-	logger::initial();
+	//logger::initial();
 	BOOST_LOG_TRIVIAL(warning) << message;
 }
 
 void logger::errorLog(std::string message)
 {
-	logger::initial();
+	//logger::initial();
 	BOOST_LOG_TRIVIAL(error) << message;
 }
 
 void logger::fatalLog(std::string message)
 {
-	logger::initial();
+	//logger::initial();
 	BOOST_LOG_TRIVIAL(fatal) << message;
 }

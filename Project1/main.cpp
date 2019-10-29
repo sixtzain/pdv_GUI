@@ -4,17 +4,25 @@
 
 using namespace std;
 
+bool start()
+{
+	bool success = true;
+	if (checkInstallation()) { return success; }
+	else if (!setInstallReg())
+	{
+		success = false;
+		return success;
+	}
+	return success;
+}
+
 int __stdcall WinMain()
 {
-	bool verga;
-	if (checkInstallation())
+	if (start())
 	{
-		//login_screen^ windowskk = gcnew login_screen;
-		//Application::Run(windowskk);
-		cout << "si ppro :v" << endl;
-		verga = true;
+		login_screen^ windowskk = gcnew login_screen;
+		Application::Run(windowskk);
 	}
-	else { cout << "Nel prro >:v"; verga = false; }
 
 	return 0;
 }
