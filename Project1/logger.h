@@ -9,7 +9,7 @@ class logger
 {
 public:
 	logger();
-	void initial(int severity_level);
+	void initial(int severity_level, std::string file_name);
 	void infoLog(std::string message);
 	void debugLog(std::string message);
 	void traceLog(std::string message);

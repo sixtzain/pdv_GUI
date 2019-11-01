@@ -5,15 +5,16 @@ namespace keywords = boost::log::keywords;
 
 logger::logger()
 {
-	initial(1);
+	std::string no_use;
+	initial(1, no_use);
 }
 
-void logger::initial(int severity_level=1)
+void logger::initial(int severity_level=1, std::string file_name="main")
 {
 	loggerino::register_simple_formatter_factory<loggerino::trivial::severity_level, char>("Severity");
 	loggerino::add_file_log
 	(
-		keywords::file_name = "main.log",
+		keywords::file_name = file_name + ".log",
 		keywords::format = "[%TimeStamp%] [%ThreadID%] [%Severity%] %Message%"
 	);
 
