@@ -1,21 +1,13 @@
 #include "intro_screen.h"
 
-
-
 intro_screen::intro_screen()
 {
-	this->Text = L"Hola Pariente Kun - Login para algo inutil xDxDxDDddxxxddXXDxdD";
+	this->Text = L"Bienvenido!!, por favor registra tu usuario";
 	this->Size = Drawing::Size(MAX_HEIGHT_WINDOW, MAX_WIDTH_WINDOW);
 
 	int pos_x = getResponsiveLocation(MAX_HEIGHT_WINDOW, MAX_WIDTH_WINDOW)[0];
 	int pos_y = getResponsiveLocation(MAX_WIDTH_WINDOW, MAX_WIDTH_WINDOW)[1];
 
-	//logo Settings
-	logo = gcnew PictureBox;
-	logo->Location = Point(50, 80);
-	logo->BorderStyle = BorderStyle::FixedSingle;
-	logo->Image = Image::FromFile("img\\face_logo.png");
-	logo->Size = Drawing::Size(418, 418);
 	//User Label Settings
 	u_label = gcnew Label;
 	u_label->Location = Point(pos_x, pos_y);
@@ -37,31 +29,30 @@ intro_screen::intro_screen()
 	password->UseSystemPasswordChar = true;
 	//CheckBox Settings
 	unlock_password = gcnew CheckBox;
-	unlock_password->Location = Point(pos_x + 56, pos_y + 48);
+	unlock_password->Location = Point(pos_x + 58, pos_y + 48);
 	unlock_password->Text = L"Show Password";
 	unlock_password->Click += gcnew System::EventHandler(this, &intro_screen::showPassword);
 	//Button Settings
-	login_btn = gcnew Button;
-	login_btn->Location = Point(pos_x + 56, pos_y + 92);
-	login_btn->Text = L"Login";
-	login_btn->AutoSize = true;
-	login_btn->Click += gcnew System::EventHandler(this, &intro_screen::logUser);
+	register_btn = gcnew Button;
+	register_btn->Location = Point(pos_x + 80, pos_y + 86);
+	register_btn->Text = L"Register";
+	register_btn->AutoSize = true;
+	register_btn->Click += gcnew System::EventHandler(this, &intro_screen::registerUser);
 	//Background color
 	this->BackColor = Color::Beige;
 
 	//Adding elements to window
-	this->Controls->Add(logo);
 	this->Controls->Add(u_label);
 	this->Controls->Add(p_label);
 	this->Controls->Add(user);
 	this->Controls->Add(password);
 	this->Controls->Add(unlock_password);
-	this->Controls->Add(login_btn);
+	this->Controls->Add(register_btn);
 }
 
 int* intro_screen::getResponsiveLocation(int x_size, int y_size)
 {
-	int x_resized = x_size * 0.66;
+	int x_resized = x_size * 0.33;
 	int y_resized = y_size * 0.33;
 	int arr_pos[1];
 	arr_pos[0] = x_resized;
@@ -83,7 +74,7 @@ void intro_screen::showPassword(Object^ Sender, EventArgs^ e)
 	else { return; }
 }
 
-void intro_screen::logUser(Object^ Sender, EventArgs^ e)
+void intro_screen::registerUser(Object^ Sender, EventArgs^ e)
 {
 
 }

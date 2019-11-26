@@ -18,15 +18,14 @@ public:
 	unsigned int MAX_HEIGHT_WINDOW = 780;
 	unsigned int MAX_WIDTH_WINDOW = 640;
 private:
-	PictureBox^ logo;
 	Label^		u_label;
 	Label^		p_label;
 	TextBox^	user;
 	TextBox^	password;
 	CheckBox^	unlock_password;
-	Button^		login_btn;
+	Button^		register_btn;
 
 	void showPassword(Object^ Sender, EventArgs^ e);
-	void logUser(Object^ Sender, EventArgs^ e);
+	void registerUser(Object^ Sender, EventArgs^ e);
 };
 
