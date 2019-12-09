@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <vector>
 
 #include "logger.h"
 #include "boost\filesystem.hpp"
@@ -18,6 +19,8 @@ public:
 	FileHandler();
 	~FileHandler();
 
+	logger	_logger;
+
 	bool rootDirectory();
 	bool checkInstallIntegrity();
 	int  writeUsrData(int dDataType, string dDataContent);
@@ -26,10 +29,10 @@ private:
 	int conStrToBin(string pStrData);
 	string conBinToStr(int pBinData);
 
-	string iMainFolder = "\\pdv\\";
-	string iBinFolder = "\\Bin\\";
-	string iFilesFolder = "\\Files\\";
-	string iRecoveryFolder = "\\Recovery\\";
-	string iDllFolder = "\\dll\\";
+	string iMainFolder = "\\pdv_gui";
+	string iBinFolder = "\\bin";
+	string iFilesFolder = "\\data_files";
+	string iRecoveryFolder = "\\recovery";
+	string iDllFolder = "\\dll";
 };
 
