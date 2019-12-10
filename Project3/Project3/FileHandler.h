@@ -1,10 +1,12 @@
 #pragma once
 
+#include <fstream>
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
 
 #include "logger.h"
+#include "defines.h"
 #include "boost\filesystem.hpp"
 #include "boost\filesystem\path.hpp"
 #include "boost\filesystem\operations.hpp"
@@ -23,7 +25,7 @@ public:
 
 	bool rootDirectory();
 	bool checkInstallIntegrity();
-	int  writeUsrData(int dDataType, string dDataContent);
+	int  writeUsrData(int dDataType, string dDataContent, string pPassword);
 
 private:
 	int conStrToBin(string pStrData);
