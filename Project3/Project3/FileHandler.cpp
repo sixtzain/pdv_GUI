@@ -87,15 +87,22 @@ int FileHandler::writeUsrData(int dDataType, string dDataContent, string pPasswo
 				_logger.infoLog("File found: " + f.path().c_str);
 				if (f.path().c_str == USER_PASS_FILE) { up = pFiles[f.path().c_str]; break; }
 			}
-			_logger.infoLog("Vector file found: ");
+			_logger.infoLog("Vector file found: " + up);
 			std::ofstream	fUsrPass;
 
 			fUsrPass.open(up);
+			_logger.infoLog("File opened successfully!!");
 			user = conStrToBin(dDataContent);
 			password = conStrToBin(pPassword);
 
+			_logger.debugLog("User: " + user + "Password: " + password);
+			_logger.infoLog("Writing data to opened file!");
+
 			fUsrPass << user + ":";
 			fUsrPass << password + "\n";
+
+			fUsrPass.close();
+			_logger.infoLog("File closed successfully, operation complete!!");
 		}
 		else { _logger.errorLog("unabler to find path/file :("); throw 1; }
 	}
@@ -119,7 +126,7 @@ int FileHandler::conStrToBin(string pStrData)
 	for (int i = 0; i<user.length(); i++)
 	{
 		ascChar = user[i];
-		cout << ascChar << endl;
+		_logger.infoLog("ascii val: " + to_string(ascChar));
 	}
 	return ascChar*50;
 }
@@ -128,5 +135,8 @@ int FileHandler::conStrToBin(string pStrData)
 string FileHandler::conBinToStr(int pBinData)
 {
 	string lol;
+	lol = (char)pBinData;
+	_logger.debugLog("Converting from: " + to_string(pBinData) + "to string: " + lol);
+
 	return lol;
 }
