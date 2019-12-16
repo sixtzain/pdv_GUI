@@ -88,7 +88,7 @@
       <AdditionalIncludeDirectories>..\..\Project2\Project2;..\..\Project1;%(AdditionalIncludeDirectories);C:\boost_1_71_0;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>..\..\Project2\x64\Debug;%(AdditionalLibraryDirectories);C:\boost_1_69_0\boost_1_69_0\stage\lib\;..\..\Project2\x64\Debug;..\..\Project1</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Project2\x64\Debug;C:\boost_1_69_0\boost_1_69_0\stage\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);Project2.lib;libboost_log-vc140-mt-gd-x64-1_69.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -116,6 +116,8 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\..\Project2\x64\Debug;C:\boost_1_69_0\boost_1_69_0\stage\lib;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);Project2.lib;libboost_log-vc140-mt-gd-x64-1_69.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
