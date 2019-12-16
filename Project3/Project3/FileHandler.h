@@ -3,41 +3,44 @@
 	#define _CRT_SECURE_NO_WARNINGS
 #endif
 
+#ifdef FILE_HANDLER_EXPORTS
+#define FILE_HANDLER_API __declspec(dllexport)
+#else
+#define FILE_HANDLER_API __declspec(dllimport)
+#endif
+
 #include <fstream>
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
 
-#include "logger.h"
 #include "defines.h"
 #include "boost\filesystem.hpp"
 #include "boost\filesystem\path.hpp"
+#include "..\..\logger\logger\logger.h"
 #include "boost\filesystem\operations.hpp"
 
 using namespace std;
 using namespace boost::filesystem;
 
-class FileHandler :
-	public logger
+class FILE_HANDLER_API FileHandler
 {
 public:
 	FileHandler();
 	~FileHandler();
 
-	logger	_logger;
-
 	bool rootDirectory();
 	bool checkInstallIntegrity();
-	int  writeUsrData(int dDataType, string dDataContent, string pPassword);
+	int  writeUsrData(int dDataType, std::string dDataContent, std::string pPassword);
 
 private:
 	int conStrToBin(string pStrData);
-	string conBinToStr(int pBinData);
+	std::string conBinToStr(int pBinData);
 
-	string iMainFolder = "\\pdv_gui";
-	string iBinFolder = "\\bin";
-	string iFilesFolder = "\\data_files";
-	string iRecoveryFolder = "\\recovery";
-	string iDllFolder = "\\dll";
+	std::string iMainFolder = "\\pdv_gui";
+	std::string iBinFolder = "\\bin";
+	std::string iFilesFolder = "\\data_files";
+	std::string iRecoveryFolder = "\\recovery";
+	std::string iDllFolder = "\\dll";
 };
 

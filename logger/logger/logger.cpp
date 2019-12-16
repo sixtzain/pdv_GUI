@@ -1,5 +1,6 @@
 #include "logger.h"
 
+using namespace std;
 namespace loggerino = boost::log;
 namespace keywords = boost::log::keywords;
 
@@ -9,7 +10,7 @@ logger::logger()
 	initial(1, no_use);
 }
 
-void logger::initial(int severity_level=1, std::string file_name="main")
+void logger::initial(int severity_level = 1, std::string file_name = "main")
 {
 	loggerino::register_simple_formatter_factory<loggerino::trivial::severity_level, char>("Severity");
 	loggerino::add_file_log

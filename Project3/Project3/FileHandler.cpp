@@ -1,6 +1,6 @@
 #include "FileHandler.h"
 
-
+logger _logger;
 
 FileHandler::FileHandler()
 {

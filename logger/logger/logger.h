@@ -1,11 +1,21 @@
 #pragma once
+
+#ifdef LOGGER_API_EXPORTS
+#define LOGGER_API __declspec(dllexport)
+#else
+#define LOGGER_API __declspec(dllimport)
+#endif
+
+#include <iostream>
+#include <string>
+
 #include "boost\log\core.hpp"
 #include "boost\log\trivial.hpp"
 #include "boost\log\expressions.hpp"
 #include "boost\log\utility\setup\file.hpp"
 #include "boost\log\utility\setup\common_attributes.hpp"
 
-class logger
+class LOGGER_API logger
 {
 public:
 	logger();
@@ -18,3 +28,4 @@ public:
 	void fatalLog(std::string message);
 };
 
+//extern "C" LOGGER_API logger* trgClass();

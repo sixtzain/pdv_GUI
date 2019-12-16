@@ -26,6 +26,6 @@ int __stdcall WinMain()
 	}*/
 	intro_screen^ registerKK = gcnew intro_screen;
 	Application::Run(registerKK);
-
+	
 	return 0;
 }

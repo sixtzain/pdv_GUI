@@ -2,7 +2,7 @@
 #ifdef WINFUNCS_EXPORTS
 #define WINFUNCS_API __declspec(dllexport)
 #else
-#define WINFUNCS_API __declspec(dllexport)
+#define WINFUNCS_API __declspec(dllimport)
 #endif
 
 extern "C" WINFUNCS_API bool checkInstallation();
