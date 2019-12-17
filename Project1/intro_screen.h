@@ -4,6 +4,9 @@
 #using <System.Drawing.dll>
 #using <System.Windows.Forms.dll>
 
+#include "FileHandler.h"
+#include "logger.h"
+
 using namespace System;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
@@ -17,6 +20,7 @@ public:
 
 	unsigned int MAX_HEIGHT_WINDOW = 780;
 	unsigned int MAX_WIDTH_WINDOW = 640;
+
 private:
 	Label^		u_label;
 	Label^		p_label;
@@ -29,3 +33,16 @@ private:
 	void registerUser(Object^ Sender, EventArgs^ e);
 };
 
+class files: public FileHandler
+{
+public:
+	files();
+	~files();
+};
+
+class logging: public logger
+{
+public:
+	logging();
+	~logging();
+};

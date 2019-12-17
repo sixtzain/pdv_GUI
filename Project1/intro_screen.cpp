@@ -1,5 +1,7 @@
 #include "intro_screen.h"
 
+logging	_logger;
+
 intro_screen::intro_screen()
 {
 	this->Text = L"Bienvenido!!, por favor registra tu usuario";
@@ -76,5 +78,39 @@ void intro_screen::showPassword(Object^ Sender, EventArgs^ e)
 
 void intro_screen::registerUser(Object^ Sender, EventArgs^ e)
 {
+	files	mFiles;
+	double tmpUser = double::Parse(user->Text);
+	double tmpPwsd = double::Parse(password->Text);
+	long   exit_code;
 
+	try
+	{
+		if (mFiles.checkInstallIntegrity())
+		{
+			_logger.infoLog("Installation ok");
+			_logger.infoLog("Attemping to register users/passwd");
+			_logger.infoLog("Checking file integrity....");
+			_logger.debugLog("vUser: " + to_string(tmpUser) + "vPwdd: " + to_string(tmpPwsd));
+
+			(mFiles.writeUsrData(0, to_string(tmpUser), to_string(tmpPwsd)) != 0) ? exit_code = 1 : exit_code = 0;
+		}
+	}
+	catch (exception &exc)
+	{
+		string eMess = to_string(*exc.what());
+		_logger.fatalLog("exception found!!: " + eMess);
+	}
+
+	if (exit_code != 0)
+	{
+		_logger.fatalLog("Something in the installation went wrong jajaja not sure what it is xdxd");
+		MessageBox::Show("Something in the installation went wrong jajaja not sure what it is xdxd but you may call the DEV guy to make him work", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		Application::Exit();
+	}
+	else
+	{
+		_logger.infoLog("Successfully configured!!");
+		MessageBox::Show("Good! You have been set your admin account!, lets proceed to login!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		Application::Exit();
+	}
 }

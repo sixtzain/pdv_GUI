@@ -101,11 +101,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Project2\Project2;%(AdditionalIncludeDirectories);C:\boost_1_71_0;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Project2\Project2;%(AdditionalIncludeDirectories);C:\boost_1_71_0;..\Project3\Project3;..\logger\logger</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>Project2.lib;libboost_log-vc140-mt-gd-x64-1_69.lib;</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\jallargx\source\repos\sixtzain\pdv_GUI\Project2\x64\Debug;%(AdditionalLibraryDirectories);C:\boost_1_69_0\boost_1_69_0\stage\lib\;C:\Users\sixtzain\source\repos\sixtzain\pdv_GUI\Project2\x64\Debug;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Project2.lib;libboost_log-vc140-mt-gd-x64-1_69.lib;Project3.lib;logger.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);C:\boost_1_69_0\boost_1_69_0\stage\lib\;..\Project2\x64\Debug;..\Project3\x64\Debug;..\logger\x64\Debug</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

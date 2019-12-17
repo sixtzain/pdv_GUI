@@ -5,27 +5,30 @@
 
 using namespace std;
 
-bool start()
+bool begining()
 {
-	bool success = true;
-	if (checkInstallation()) { return success; }
-	else if (!setInstallReg())
+	if (!checkInstallation())
 	{
-		success = false;
-		return success;
+		setInstallReg();
+		intro_screen^ intross = gcnew intro_screen;
+		Application::Run(intross);
+		
+		if (!checkInstallation()) { return false; }
 	}
-	return success;
+	else { return true; }
+
+	return false;
 }
 
 int __stdcall WinMain()
 {
-	/*if (start())
+	if (begining())
 	{
 		login_screen^ windowskk = gcnew login_screen;
 		Application::Run(windowskk);
-	}*/
-	intro_screen^ registerKK = gcnew intro_screen;
-	Application::Run(registerKK);
+	}
+	//intro_screen^ registerKK = gcnew intro_screen;
+	//Application::Run(registerKK);
 	
 	return 0;
 }
