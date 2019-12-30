@@ -2,23 +2,29 @@
 
 logger _logger;
 
-FileHandler::FileHandler()
+std::string iMainFolder = "\\pdv_gui";
+std::string iBinFolder = "\\bin";
+std::string iFilesFolder = "\\data_files";
+std::string iRecoveryFolder = "\\recovery";
+std::string iDllFolder = "\\dll";
+
+/*FileHandler::FileHandler()
 {
 }
 
 
 FileHandler::~FileHandler()
 {
-}
+}*/
 
 //Not sure what to do with this function, don't delete could be useful in the future
-bool FileHandler::rootDirectory()
+bool rootDirectory()
 {
 	return true;
 }
 
 //Check all install folders previously created by the WinRar install tool
-bool FileHandler::checkInstallIntegrity()
+bool checkInstallIntegrity()
 {
 	string mFolder = getenv("ProgramFiles") + iMainFolder;
 	path fInstallFolder(mFolder);
@@ -69,12 +75,31 @@ bool FileHandler::checkInstallIntegrity()
 }
 
 //During first install this function will help to set the admin user and password as well, also implemented when creating users
-int FileHandler::writeUsrData(int dDataType, string dDataContent, string pPassword)
+int writeUsrData(int dDataType, string dDataContent, string pPassword)
 {
-	string	up, user, password;
+	string	up, user, password, file_the_shit = "\\up100022.txt";
 	path	fBin(getenv("USERPROFILE") + iMainFolder + iBinFolder);
+	path	fileS(fBin.string() + file_the_shit);
 
 	_logger.infoLog("Opening bin file for writing data");
+
+	if (exists(fBin) && is_directory(fBin))
+	{
+		int	shitVar = 0;
+		for (boost::filesystem::directory_entry &x : directory_iterator(fBin))
+		{
+			if (x.path().string() == fileS.string()) { _logger.infoLog("hasta aqui we" + x.path().string()); break; }
+			//else { continue; }
+			shitVar = 0;
+			shitVar++;
+			_logger.infoLog("mi pichula: " + fileS.string());
+		}
+		if (shitVar == 1) 
+		{ 
+			boost::filesystem::ofstream pUFile(fileS);
+			pUFile.close();
+		}
+	}
 
 	try
 	{
@@ -82,12 +107,13 @@ int FileHandler::writeUsrData(int dDataType, string dDataContent, string pPasswo
 		{
 			std::vector<string> pFiles;
 			int cont = 0;
-			for (directory_entry& f : directory_iterator(fBin))
+			for (boost::filesystem::directory_entry &f : boost::filesystem::directory_iterator(fBin))
 			{
 				cont++;
 				pFiles.push_back(f.path().string());
+				_logger.infoLog("actual path: " + fBin.string());
 				_logger.infoLog("File found: " + f.path().string());
-				if (f.path().string() == USER_PASS_FILE) { up = pFiles[cont--]; break; }
+				if (f.path().string() == fileS.string()) { up = pFiles[cont]; break; _logger.infoLog("wtf is that!!: " + up + " " + pFiles[cont] + "sin el - " + pFiles[cont]); }
 			}
 			_logger.infoLog("Vector file found: " + up);
 			std::ofstream	fUsrPass;
@@ -106,7 +132,7 @@ int FileHandler::writeUsrData(int dDataType, string dDataContent, string pPasswo
 			fUsrPass.close();
 			_logger.infoLog("File closed successfully, operation complete!!");
 		}
-		else { _logger.errorLog("unabler to find path/file :("); throw 1; }
+		else { _logger.errorLog("unabler to find path/file :("); return 1; }
 	}
 	catch (exception &ex)
 	{
@@ -118,7 +144,7 @@ int FileHandler::writeUsrData(int dDataType, string dDataContent, string pPasswo
 }
 
 //Conversor from string to binary to encode data
-int FileHandler::conStrToBin(string pStrData)
+int conStrToBin(string pStrData)
 {
 	string user = pStrData;
 	int ascChar;
@@ -134,10 +160,17 @@ int FileHandler::conStrToBin(string pStrData)
 }
 
 //Conversor from binary to String for decode data
-string FileHandler::conBinToStr(int pBinData)
+char* conBinToStr(int pBinData)
 {
-	string lol;
-	lol = (char)(pBinData/50);
+	int nDigit = 1;
+	while (pBinData / 20 > 0)
+	{
+		pBinData = pBinData / 20;
+		nDigit++;
+	}
+
+	char* lol = (char *) malloc(sizeof(char) * nDigit);
+	*lol = (char)(pBinData/50);
 	_logger.debugLog("Converting from: " + to_string(pBinData) + "to string: " + lol);
 
 	return lol;

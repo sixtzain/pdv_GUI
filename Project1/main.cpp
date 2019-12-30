@@ -9,15 +9,15 @@ bool begining()
 {
 	if (!checkInstallation())
 	{
-		setInstallReg();
+		//setInstallReg();
 		intro_screen^ intross = gcnew intro_screen;
 		Application::Run(intross);
 		
-		if (!checkInstallation()) { return false; }
+		if (!checkInstallation()) { return true; }
 	}
 	else { return true; }
 
-	return false;
+	return true;
 }
 
 int __stdcall WinMain()

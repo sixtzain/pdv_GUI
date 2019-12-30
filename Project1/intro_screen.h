@@ -5,13 +5,13 @@
 #using <System.Windows.Forms.dll>
 
 #include "FileHandler.h"
-#include "logger.h"
+//#include "logger.h"
 
 using namespace System;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-ref class intro_screen:
+ref class intro_screen :
 	public Form
 {
 public:
@@ -31,18 +31,4 @@ private:
 
 	void showPassword(Object^ Sender, EventArgs^ e);
 	void registerUser(Object^ Sender, EventArgs^ e);
-};
-
-class files: public FileHandler
-{
-public:
-	files();
-	~files();
-};
-
-class logging: public logger
-{
-public:
-	logging();
-	~logging();
 };

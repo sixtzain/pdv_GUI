@@ -100,12 +100,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Project2\Project2;%(AdditionalIncludeDirectories);C:\boost_1_71_0;..\Project3\Project3;..\logger\logger</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BOOST_FILESYSTEM_NO_DEPRECATED</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Project3\Project3;..\Project2\Project2;..\logger\logger;C:\boost_1_70_0;</AdditionalIncludeDirectories>
+      <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>Project2.lib;libboost_log-vc140-mt-gd-x64-1_69.lib;Project3.lib;logger.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);C:\boost_1_69_0\boost_1_69_0\stage\lib\;..\Project2\x64\Debug;..\Project3\x64\Debug;..\logger\x64\Debug</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Project3.lib;Project2.lib;logger.lib;libboost_filesystem-vc140-mt-gd-x64-1_70.lib;libboost_regex-vc140-mt-gd-x64-1_70.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Project3\x64\Debug;..\logger\x64\Debug;..\Project2\x64\Debug;C:\boost_1_70_0\stage\lib;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -120,12 +121,13 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\jallargx\source\repos\sixtzain\pdv_GUI\Project2\Project2;%(AdditionalIncludeDirectories);C:\boost_1_69_0\boost_1_69_0;C:\Users\sixtzain\source\repos\sixtzain\pdv_GUI\Project2\Project2;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BOOST_FILESYSTEM_NO_DEPRECATED</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Project3\Project3;..\Project2\Project2;..\logger\logger;C:\boost_1_70_0;</AdditionalIncludeDirectories>
+      <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>Project2.lib;libboost_log-vc140-mt-x64-1_69.lib;</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\jallargx\source\repos\sixtzain\pdv_GUI\Project2\x64\Release;%(AdditionalLibraryDirectories);C:\boost_1_69_0\boost_1_69_0\stage\lib\;C:\Users\sixtzain\Source\Repos\sixtzain\pdv_GUI\Project2\x64\Release;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Project3.lib;Project2.lib;logger.lib;libboost_filesystem-vc140-mt-gd-x64-1_70.lib;libboost_regex-vc140-mt-gd-x64-1_70.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Project3\x64\Debug;..\logger\x64\Debug;..\Project2\x64\Debug;C:\boost_1_70_0\stage\lib;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

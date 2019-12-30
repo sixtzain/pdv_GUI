@@ -13,27 +13,34 @@
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
-
 #include "defines.h"
 #include "boost\filesystem.hpp"
 #include "boost\filesystem\path.hpp"
-#include "..\..\logger\logger\logger.h"
+#include "logger.h"
 #include "boost\filesystem\operations.hpp"
 
 using namespace std;
 using namespace boost::filesystem;
 
-class FILE_HANDLER_API FileHandler
+extern "C" FILE_HANDLER_API bool rootDirectory();
+
+extern "C" FILE_HANDLER_API bool checkInstallIntegrity();
+
+extern "C" FILE_HANDLER_API int  writeUsrData(int dDataType, std::string dDataContent, std::string pPassword);
+
+extern "C" FILE_HANDLER_API int conStrToBin(string pStrData);
+
+extern "C" FILE_HANDLER_API char* conBinToStr(int pBinData);
+
+/*ref class FileHandler
 {
 public:
-	FileHandler();
-	~FileHandler();
+	///FileHandler();
+	//~FileHandler();
 
 	bool rootDirectory();
 	bool checkInstallIntegrity();
 	int  writeUsrData(int dDataType, std::string dDataContent, std::string pPassword);
-
-private:
 	int conStrToBin(string pStrData);
 	std::string conBinToStr(int pBinData);
 
@@ -42,5 +49,4 @@ private:
 	std::string iFilesFolder = "\\data_files";
 	std::string iRecoveryFolder = "\\recovery";
 	std::string iDllFolder = "\\dll";
-};
-
+	};*/
