@@ -9,7 +9,7 @@ bool begining()
 {
 	if (!checkInstallation())
 	{
-		//setInstallReg();
+		setInstallReg();
 		intro_screen^ intross = gcnew intro_screen;
 		Application::Run(intross);
 		
