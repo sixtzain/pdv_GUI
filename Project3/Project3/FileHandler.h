@@ -9,6 +9,7 @@
 #define FILE_HANDLER_API __declspec(dllimport)
 #endif
 
+#include <istream>
 #include <fstream>
 #include <iostream>
 #include <stdlib.h>
@@ -27,6 +28,8 @@ extern "C" FILE_HANDLER_API bool rootDirectory();
 extern "C" FILE_HANDLER_API bool checkInstallIntegrity();
 
 extern "C" FILE_HANDLER_API int  writeUsrData(int dDataType, std::string dDataContent, std::string pPassword);
+
+extern "C" FILE_HANDLER_API int verifyUser(std::string dUser, std::string pPassword);
 
 extern "C" FILE_HANDLER_API int conStrToBin(string pStrData);
 

@@ -67,6 +67,14 @@ int* login_screen::getResponsiveLocation(int x_size, int y_size)
 	return pArr;
 }
 
+void login_screen::MarshalString(String^ s, std::string& os) {
+	using namespace Runtime::InteropServices;
+	const char* chars =
+		(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+	os = chars;
+	Marshal::FreeHGlobal(IntPtr((void*)chars));
+}
+
 void login_screen::showPassword(Object^ Sender, EventArgs^ e)
 {
 	if (unlock_password->Checked)
@@ -82,5 +90,12 @@ void login_screen::showPassword(Object^ Sender, EventArgs^ e)
 
 void login_screen::logUser(Object^ Sender, EventArgs^ e)
 {
-	
+	String^ tmpUser = user->Text->ToString();
+	String^ tmpPwsd = password->Text->ToString();
+	std::string cUser, cPwsd;
+
+	MarshalString(tmpUser, cUser);
+	MarshalString(tmpPwsd, cPwsd);
+
+	delete tmpUser, tmpPwsd;
 }

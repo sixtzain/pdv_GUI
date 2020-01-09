@@ -129,7 +129,7 @@ int writeUsrData(int dDataType, std::string dDataContent, std::string pPassword)
 			user = conStrToBin(dDataContent);
 			password = conStrToBin(pPassword);
 
-			_logger.infoLog("User: " + user + "Password: " + password);
+			_logger.infoLog("User: " + user + " Password: " + password);
 			_logger.infoLog("Writing data to opened file!");
 
 			fUsrPass << user + ":";
@@ -147,6 +147,63 @@ int writeUsrData(int dDataType, std::string dDataContent, std::string pPassword)
 	}
 
 	return 0;
+}
+
+int verifyUser(std::string dUser, std::string pPassword)
+{
+	string	up, registeredUser, registeredPassword, file_the_shit = "\\up100022.txt";
+	path	fileS(getenv("USERPROFILE") + iMainFolder + iBinFolder + file_the_shit);
+
+	_logger.infoLog("validating user information in DB");
+
+	try
+	{
+		if (exists(fileS))
+		{
+			std::string pT[15], pPass[10], line;
+			std::ifstream	fUsrPass;
+
+			fUsrPass.open(fileS.string());
+			_logger.infoLog("File opened successfully!!");
+
+			/*Need to add logic to read file*/
+			if (fUsrPass.is_open())
+			{
+				while (std::getline(fUsrPass, pT[], ':'))
+				{
+
+				}
+			}
+
+			registeredUser = conBinToStr();
+			registeredPassword = conBinToStr();
+
+			fUsrPass.close();
+			_logger.infoLog("File closed successfully");
+
+			_logger.infoLog("User Registered: " + registeredUser + " Password Registered: " + registeredPassword);
+			_logger.infoLog("User entered: " + dUser + " Password entered: " + pPassword);
+			_logger.infoLog("Comparing information.....");
+
+			if (registeredUser == dUser)
+			{
+				if (registeredPassword == pPassword)
+				{
+					_logger.infoLog("Access granted :D, admin user activated adn ready for activities");
+					return 0;
+				}
+				else { _logger.infoLog("Password entered is incorrect :/, please try once again"); return 3; }
+			}
+			else { _logger.infoLog("User entered is incorrect, please be sure you entered the correct user"); return 2; }
+
+		}
+		else { _logger.errorLog("unabler to find path/file :'("); return 1; }
+	}
+	catch (exception &ex)
+	{
+		_logger.fatalLog("Unable to find or open up100022.bin file!! error code: " + *ex.what());
+		return 1;
+	}
 }
 
 //Conversor from string to binary to encode data
@@ -177,7 +234,7 @@ char* conBinToStr(int pBinData)
 
 	char* lol = (char *) malloc(sizeof(char) * nDigit);
 	*lol = (char)(pBinData/50);
-	_logger.debugLog("Converting from: " + to_string(pBinData) + "to string: " + lol);
+	_logger.debugLog("Converting from: " + to_string(pBinData) + " to string: " + lol);
 
 	return lol;
 }

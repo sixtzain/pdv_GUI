@@ -4,6 +4,8 @@
 #using <System.Drawing.dll>
 #using <System.Windows.Forms.dll>
 
+#include "FileHandler.h"
+
 using namespace System;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
@@ -27,4 +29,5 @@ private:
 	Button^		login_btn;
 	void showPassword(Object^ Sender, EventArgs^ e);
 	void logUser(Object^ Sender, EventArgs^ e);
+	void MarshalString(String^ s, std::string& os);
 };
