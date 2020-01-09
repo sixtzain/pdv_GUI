@@ -3,7 +3,7 @@
 
 login_screen::login_screen()
 {
-	this->Text = L"Hola Pariente Kun - Login para algo inutil xDxDxDDddxxxddXXDxdD";
+	this->Text = L"Hola, bienvenido por favor ingrese su usuario";
 	this->Size = Drawing::Size(MAX_HEIGHT_WINDOW, MAX_WIDTH_WINDOW);
 
 	int pos_x = getResponsiveLocation(MAX_HEIGHT_WINDOW, MAX_WIDTH_WINDOW)[0];

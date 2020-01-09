@@ -80,8 +80,12 @@ void intro_screen::registerUser(Object^ Sender, EventArgs^ e)
 {
 	String^ tmpUser = user->Text->ToString();
 	String^ tmpPwsd = password->Text->ToString();
-	char*  nUser = (char*)(&tmpUser);
-	char*  nPwsd = (char*)(&tmpPwsd);
+
+	string nUser, nPwsd;
+	
+	MarshalString(tmpUser, nUser);
+	MarshalString(tmpPwsd, nPwsd);
+
 	long   exit_code;
 
 	try
@@ -112,6 +116,15 @@ void intro_screen::registerUser(Object^ Sender, EventArgs^ e)
 	{
 		//_logger.infoLog("Successfully configured!!");
 		MessageBox::Show("Good! You have been set your admin account!, lets proceed to login!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-		Application::Exit();
+		//Application::Exit();
+		this->Close();
 	}
+}
+
+void intro_screen::MarshalString(String^ s, string& os) {
+	using namespace Runtime::InteropServices;
+	const char* chars =
+		(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+	os = chars;
+	Marshal::FreeHGlobal(IntPtr((void*)chars));
 }

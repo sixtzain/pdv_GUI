@@ -1,5 +1,6 @@
 #pragma once
 #using <mscorlib.dll>
+#include <vcclr.h>
 #using <System.dll>
 #using <System.Drawing.dll>
 #using <System.Windows.Forms.dll>
@@ -31,4 +32,5 @@ private:
 
 	void showPassword(Object^ Sender, EventArgs^ e);
 	void registerUser(Object^ Sender, EventArgs^ e);
+	void MarshalString(String^ s, std::string& os);
 };

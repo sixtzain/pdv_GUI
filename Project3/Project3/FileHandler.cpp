@@ -44,7 +44,7 @@ bool checkInstallIntegrity()
 				_logger.infoLog("Path found: "+ x.path().string());
 			}
 		}
-		else { _logger.fatalLog("Some of the folders doesnt exist :0"); throw 2; }
+		else { _logger.fatalLog("Some of the folders doesnt exist :0"); return false; }
 
 		if (exists(fDataFolder) && is_directory(fDataFolder))
 		{
@@ -54,7 +54,7 @@ bool checkInstallIntegrity()
 				_logger.infoLog("Path found: " + x.path().string());
 			}
 		}
-		else { _logger.fatalLog("Some of the folders doesnt exist :0"); throw 2; }
+		else { _logger.fatalLog("Some of the folders doesnt exist :0"); return false; }
 
 		if (exists(fBin) && is_directory(fBin))
 		{
@@ -64,7 +64,7 @@ bool checkInstallIntegrity()
 				_logger.infoLog("Path found: " + x.path().string());
 			}
 		}
-		else { _logger.fatalLog("Some of the folders doesnt exist :0"); throw 2; }
+		else { _logger.fatalLog("Some of the folders doesnt exist :0"); return false; }
 	}
 	catch (exception &ec)
 	{
@@ -75,7 +75,7 @@ bool checkInstallIntegrity()
 }
 
 //During first install this function will help to set the admin user and password as well, also implemented when creating users
-int writeUsrData(int dDataType, string dDataContent, string pPassword)
+int writeUsrData(int dDataType, std::string dDataContent, std::string pPassword)
 {
 	string	up, user, password, file_the_shit = "\\up100022.txt";
 	path	fBin(getenv("USERPROFILE") + iMainFolder + iBinFolder);
@@ -83,7 +83,7 @@ int writeUsrData(int dDataType, string dDataContent, string pPassword)
 
 	_logger.infoLog("Opening bin file for writing data");
 
-	if (exists(fBin) && is_directory(fBin))
+	/*if (exists(fBin) && is_directory(fBin))
 	{
 		int	shitVar = 0;
 		for (boost::filesystem::directory_entry &x : directory_iterator(fBin))
@@ -99,21 +99,27 @@ int writeUsrData(int dDataType, string dDataContent, string pPassword)
 			boost::filesystem::ofstream pUFile(fileS);
 			pUFile.close();
 		}
-	}
+	}*/
 
 	try
 	{
 		if (exists(fBin) && is_directory(fBin))
 		{
-			std::vector<string> pFiles;
+			std::string pFiles[10];
 			int cont = 0;
 			for (boost::filesystem::directory_entry &f : boost::filesystem::directory_iterator(fBin))
 			{
-				cont++;
-				pFiles.push_back(f.path().string());
+				//cont++;
+				pFiles[cont] = f.path().string();
 				_logger.infoLog("actual path: " + fBin.string());
 				_logger.infoLog("File found: " + f.path().string());
-				if (f.path().string() == fileS.string()) { up = pFiles[cont]; break; _logger.infoLog("wtf is that!!: " + up + " " + pFiles[cont] + "sin el - " + pFiles[cont]); }
+				if (f.path().string() == fileS.string()) 
+				{ 
+					up = pFiles[cont]; 
+					_logger.infoLog("wtf is that!!: " + up + " " + pFiles[cont] + "sin el - " + pFiles[cont]);
+					break;
+				}
+				cont++;
 			}
 			_logger.infoLog("Vector file found: " + up);
 			std::ofstream	fUsrPass;
@@ -123,7 +129,7 @@ int writeUsrData(int dDataType, string dDataContent, string pPassword)
 			user = conStrToBin(dDataContent);
 			password = conStrToBin(pPassword);
 
-			_logger.debugLog("User: " + user + "Password: " + password);
+			_logger.infoLog("User: " + user + "Password: " + password);
 			_logger.infoLog("Writing data to opened file!");
 
 			fUsrPass << user + ":";
