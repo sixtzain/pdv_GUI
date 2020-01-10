@@ -152,6 +152,7 @@ int writeUsrData(int dDataType, std::string dDataContent, std::string pPassword)
 int verifyUser(std::string dUser, std::string pPassword)
 {
 	string	up, registeredUser, registeredPassword, file_the_shit = "\\up100022.txt";
+	string	aUsers[15], aPass[15];
 	path	fileS(getenv("USERPROFILE") + iMainFolder + iBinFolder + file_the_shit);
 
 	_logger.infoLog("validating user information in DB");
@@ -169,10 +170,19 @@ int verifyUser(std::string dUser, std::string pPassword)
 			/*Need to add logic to read file*/
 			if (fUsrPass.is_open())
 			{
-				while (std::getline(fUsrPass, pT[], ':'))
+				int j = 0;
+				while (std::getline(fUsrPass, line, ':'))
 				{
-
+					pT[j] = line;
+					_logger.infoLog("Value: " + pT[j]);
+					j++;
 				}
+			}
+
+			for (int i = 0; i < pT->size(); i++)
+			{
+				_logger.infoLog("pT: " + pT->size());
+				
 			}
 
 			registeredUser = conBinToStr();
